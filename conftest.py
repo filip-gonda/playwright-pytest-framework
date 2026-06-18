@@ -3,7 +3,17 @@ from pages.main_page import MainPage
 from pages.cart_page import CartPage
 from pages.signin_register_page import SignInRegisterPage
 from playwright.sync_api import sync_playwright
-from components.header import HeaderComponent
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+base_url = os.getenv("BASE_URL")
+email = os.getenv("EMAIL")
+pw = os.getenv("PASSWORD")
+headless = os.getenv("HEADLESS")
+test_id = os.getenv("TESTID")
+
 
 @pytest.fixture(scope="function")
 def setup():
@@ -11,7 +21,7 @@ def setup():
     browser = playwright.chromium.launch(headless=False)
     page = browser.new_page()
 
-    playwright.selectors.set_test_id_attribute("data-qa")
+    playwright.selectors.set_test_id_attribute(test_id)
 
 
     main_page = MainPage(page)
@@ -24,8 +34,8 @@ def setup():
 
     assert login_page.get_login_header() == "Login to your account"
 
-    login_page.enter_mail("filip.gonda1@gmail.com")
-    login_page.enter_password("Test123")
+    login_page.enter_mail(email)
+    login_page.enter_password(pw)
     login_page.click_login_button()
 
 
@@ -39,7 +49,7 @@ def empty_cart():
     browser = playwright.chromium.launch(headless=False)
     page = browser.new_page()
 
-    playwright.selectors.set_test_id_attribute("data-qa")
+    playwright.selectors.set_test_id_attribute(test_id)
 
     main_page = MainPage(page)
     cart_page = CartPage(page)
@@ -53,8 +63,8 @@ def empty_cart():
 
     assert login_page.get_login_header() == "Login to your account"
 
-    login_page.enter_mail("filip.gonda1@gmail.com")
-    login_page.enter_password("Test123")
+    login_page.enter_mail(email)
+    login_page.enter_password(pw)
     login_page.click_login_button()
 
     header.click_cart()

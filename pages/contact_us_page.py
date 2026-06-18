@@ -1,6 +1,6 @@
 from playwright.sync_api import Page
 from pages.base_page import BasePage
-from PIL import Image, ImageChops
+
 
 
 class ContactUsPage(BasePage):

@@ -1,6 +1,7 @@
 from faker import Faker
 import csv
 import random
+import enum
 
 fake = Faker()
 
@@ -53,6 +54,32 @@ def create_card_information():
     return {"card_number": card_number,
             "expiry_date": expiry_date,
             "cvv": cvv}
+
+def get_register_user_form_data():
+
+        country = random.choice(["India", "United States", "Canada", "Australia", "Israel", "New Zeland", "Singapore"])
+
+        return {
+            "name": fake.name_male(),
+            "email": fake.email(),
+            "password": fake.password(),
+            "title": "Mr",
+            "birth_date": fake.pyint(1,30,1),
+            "birth_month": fake.pyint(1,12,1),
+            "birth_year": fake.pyint(1940, 2026,1),
+            "firstname": fake.first_name_male(),
+            "lastname": fake.last_name_male(),
+            "address1": fake.address(),
+            "country": country,
+            "zipcode": fake.zipcode(),
+            "state": country,
+            "city": fake.city(),
+            "mobile_number": fake.phone_number()
+
+
+
+    }
+
 
 
 

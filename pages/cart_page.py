@@ -3,7 +3,7 @@ from components.footer import FooterComponent
 
 from playwright.sync_api import Page, expect
 
-class CartPage():
+class CartPage:
     def __init__(self, page: Page):
         self.cart = page.locator(".cart_info")
         self.proceed_button = page.locator("#do_action .btn-default")
