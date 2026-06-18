@@ -1,7 +1,7 @@
 # Playwright Pytest Test Automation Framework
 
 This project is a test automation framework built with Python, Playwright, and Pytest.  
-It is designed for UI test automation of web applications using a scalable and maintainable structure.
+It is designed for UI test automation of https://automationexercise.com/ using a scalable and maintainable structure.
 
 ---
 
