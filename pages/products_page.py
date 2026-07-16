@@ -28,7 +28,7 @@ class ProductsPage():
         ## create ProductComponent for all products visible on page
         for i in range(count):
             product = self.products_cards.nth(i)
-            products.append(ProductComponent(product))
+            products.append(ProductComponent(product, Page))
         return products
 
     def search_product(self, product_to_search):
