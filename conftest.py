@@ -18,7 +18,7 @@ test_id = os.getenv("TESTID")
 @pytest.fixture(scope="function")
 def setup():
     playwright = sync_playwright().start()
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     page = browser.new_page()
 
     playwright.selectors.set_test_id_attribute(test_id)
@@ -46,7 +46,7 @@ def setup():
 @pytest.fixture(scope="function")
 def empty_cart():
     playwright = sync_playwright().start()
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     page = browser.new_page()
 
     playwright.selectors.set_test_id_attribute(test_id)
