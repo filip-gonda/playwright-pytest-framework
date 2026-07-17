@@ -27,5 +27,4 @@ class ProductComponent:
 
     def click_add_to_cart(self):
         self.root.locator(".productinfo a").click()
-        self.page.wait_for_load_state("domcontentloaded")
 
