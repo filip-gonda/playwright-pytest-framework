@@ -76,3 +76,21 @@ def empty_cart():
     yield page
     browser.close()
     playwright.stop()
+
+import os
+import pytest
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    report = outcome.get_result()
+
+    if report.when == "call" and report.failed:
+        page = item.funcargs.get("setup") or item.funcargs.get("empty_cart")
+
+        if page:
+            os.makedirs("screenshots", exist_ok=True)
+            page.screenshot(
+                path=f"screenshots/{item.name}.png",
+                full_page=True
+            )

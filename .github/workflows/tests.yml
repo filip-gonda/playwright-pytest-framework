@@ -33,6 +33,13 @@ jobs:
         run: |
           playwright install --with-deps
 
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: screenshots/
+
       - name: Run tests
         run: |
           pytest -s -v || true
