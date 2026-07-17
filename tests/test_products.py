@@ -55,7 +55,7 @@ def test_verify_all_products_and_product_detail_page(setup):
         assert product_page.is_image_loaded() == True
 
         ##go back to products page
-        setup.go_back()
+        header.click_products()
 
 
 

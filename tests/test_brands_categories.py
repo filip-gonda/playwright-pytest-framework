@@ -47,7 +47,7 @@ def test_categories(setup):
                 assert subcategory == product_page.get_product_category()
 
                 # go back
-                setup.go_back()
+                left_sidebar.click_subcategory(category.capitalize(), subcategory.capitalize())
 
 
 def test_brands(setup):
@@ -89,7 +89,7 @@ def test_brands(setup):
             assert brand == product_page.get_product_brand().upper()
 
             # go back
-            setup.go_back()
+            left_sidebar.click_brand(brand)
 
 
 
