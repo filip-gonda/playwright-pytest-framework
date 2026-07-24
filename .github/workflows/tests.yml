@@ -34,8 +34,14 @@ jobs:
           playwright install --with-deps chromium
 
       - name: Run tests
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          TESTID: ${{ secrets.TESTID }}
         run: |
-          pytest -s -v || true
+          pytest -v
+       
 
       - name: Upload screenshots
         if: always()
